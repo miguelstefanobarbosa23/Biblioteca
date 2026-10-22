@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Biblioteca: cadastro e listagem de livros integrados a uma API Flask." />
+  <title>Biblioteca | Projeto Integrador</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topo">
+    <h1>📚 Biblioteca</h1>
+    <p>Cadastre novos livros e consulte o acervo.</p>
+  </header>
+
+  <main class="container">
+    <!-- Mostra se a página está ligada à API Flask ou em modo demonstração -->
+    <div id="modo" class="modo" role="status" aria-live="polite"></div>
+
+    <!-- Formulário de cadastro (POST) -->
+    <form id="form-livro" class="painel" novalidate>
+      <div class="campo">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" placeholder="Ex.: Dom Casmurro" autocomplete="off" required />
+      </div>
+
+      <div class="campo">
+        <label for="autor">Autor</label>
+        <input type="text" id="autor" placeholder="Ex.: Machado de Assis" autocomplete="off" required />
+      </div>
+
+      <div class="campo">
+        <label for="ano">Ano de publicação</label>
+        <input type="number" id="ano" placeholder="Ex.: 1899" min="1" step="1" inputmode="numeric" required />
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="disponivel" checked />
+        Disponível para empréstimo
+      </label>
+
+      <button type="submit" id="botao-enviar">Cadastrar livro</button>
+    </form>
+
+    <!-- Mensagens do formulário: carregando / erro / sucesso -->
+    <div id="mensagem" class="mensagem" role="status" aria-live="polite" hidden></div>
+
+    <!-- Lista do acervo (GET) -->
+    <section class="lista-secao" aria-labelledby="titulo-lista">
+      <h2 id="titulo-lista">Acervo <span id="contador" class="contador"></span></h2>
+      <div id="erro-lista" class="mensagem erro" role="alert" hidden></div>
+      <p id="lista-vazia" class="vazio" hidden>Nenhum livro cadastrado ainda.</p>
+      <ul id="lista-livros" class="lista"></ul>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Projeto Integrador · Front-end (HTML/CSS/JS) + API Flask</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
